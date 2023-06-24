@@ -1,6 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import Nav from './components/Nav';
+import Todo from './components/Todo';
 
 import { useState } from 'react';
 
@@ -43,15 +44,7 @@ function App() {
                     <h1>
                         Hello World with React {name} {number}!
                     </h1>
-                    <div className="todo-container">
-                        {todos.map((item, index) => {
-                            return (
-                                <li key={index} className="todo-child">
-                                    {item.title}
-                                </li>
-                            );
-                        })}
-                    </div>
+                    <Todo todo={todos} />
                     <input type="text" value={input} onChange={(event) => handleOnChange(event)} />
                     <button onClick={() => handleOnClick()}> Click me!</button>
                 </header>
