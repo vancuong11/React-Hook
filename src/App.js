@@ -12,9 +12,10 @@ function App() {
     const [name, setName] = useState('Văn Cường');
     const [input, setInput] = useState('');
     const [todos, setTodos] = useState([
-        { id: 'todo1', title: 'watching youtube' },
-        { id: 'todo2', title: 'doing homework' },
-        { id: 'todo3', title: 'play game' },
+        { id: 'todo1', title: 'watching youtube', type: 'eric' },
+        { id: 'todo2', title: 'doing homework', type: 'eric' },
+        { id: 'todo3', title: 'play game', type: 'hoidanit' },
+        { id: 'todo4', title: 'reading book', type: 'hoidanit' },
     ]);
 
     let number = 2023; //number
@@ -25,7 +26,7 @@ function App() {
             return;
         }
         // hook not merge state
-        let newTodo = { id: '', title: input };
+        let newTodo = { id: '', title: input, type: 'eric' };
         setTodos([...todos, newTodo]);
         // clear input
         setInput('');
@@ -38,13 +39,16 @@ function App() {
     return (
         <>
             <div className="App">
-                <Nav />
                 <header className="App-header">
+                    <Nav />
                     <img src={logo} className="App-logo" alt="logo" />
                     <h1>
                         Hello World with React {name} {number}!
                     </h1>
-                    <Todo todo={todos} />
+                    <Todo todo={todos} title={'All Todo'} />
+
+                    <Todo todo={todos.filter((item) => item.type === 'eric')} title={`Eric todo`} />
+
                     <input type="text" value={input} onChange={(event) => handleOnChange(event)} />
                     <button onClick={() => handleOnClick()}> Click me!</button>
                 </header>

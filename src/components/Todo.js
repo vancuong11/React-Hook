@@ -4,6 +4,7 @@ function Todo(props) {
     const todos = props.todo;
     return (
         <div className="todo-container">
+            <div className="title">{props.title}</div>
             {todos.map((item, index) => {
                 return (
                     <li key={index} className="todo-child">
@@ -11,6 +12,7 @@ function Todo(props) {
                     </li>
                 );
             })}
+            <hr />
         </div>
     );
 }
