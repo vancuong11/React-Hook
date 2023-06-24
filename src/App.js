@@ -25,8 +25,10 @@ function App() {
             alert('Please enter input');
             return;
         }
+        // random id
+        let id = Math.floor(Math.random() * 1000 + 1);
         // hook not merge state
-        let newTodo = { id: '', title: input, type: 'eric' };
+        let newTodo = { id: id, title: input, type: 'eric' };
         setTodos([...todos, newTodo]);
         // clear input
         setInput('');
@@ -35,6 +37,13 @@ function App() {
     const handleOnChange = (event) => {
         setInput(event.target.value);
     };
+
+    const handleDelete = (id) => {
+        let currentTodo = todos;
+        currentTodo = currentTodo.filter((item) => item.id !== id);
+        setTodos(currentTodo);
+    };
+
     // re-render
     return (
         <>
@@ -45,9 +54,9 @@ function App() {
                     <h1>
                         Hello World with React {name} {number}!
                     </h1>
-                    <Todo todo={todos} title={'All Todo'} />
+                    <Todo todos={todos} title={'All Todo'} deleteTodo={handleDelete} />
 
-                    <Todo todo={todos.filter((item) => item.type === 'eric')} title={`Eric todo`} />
+                    {/* <Todo todo={todos.filter((item) => item.type === 'eric')} title={`Eric todo`} /> */}
 
                     <input type="text" value={input} onChange={(event) => handleOnChange(event)} />
                     <button onClick={() => handleOnClick()}> Click me!</button>
