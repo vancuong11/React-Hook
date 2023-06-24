@@ -8,13 +8,26 @@ function App() {
     // let name = 'Valne Cường'; // string
 
     // [variable, function] = useState()
-    let [name, setName] = useState('Văn Cường');
+    const [name, setName] = useState('Văn Cường');
     const [input, setInput] = useState('');
+    const [todos, setTodos] = useState([
+        { id: 'todo1', title: 'watching youtube' },
+        { id: 'todo2', title: 'doing homework' },
+        { id: 'todo3', title: 'play game' },
+    ]);
 
     let number = 2023; //number
 
     const handleOnClick = () => {
-        setName(input);
+        if (!input) {
+            alert('Please enter input');
+            return;
+        }
+        // hook not merge state
+        let newTodo = { id: '', title: input };
+        setTodos([...todos, newTodo]);
+        // clear input
+        setInput('');
     };
 
     const handleOnChange = (event) => {
@@ -30,6 +43,15 @@ function App() {
                     <h1>
                         Hello World with React {name} {number}!
                     </h1>
+                    <div className="todo-container">
+                        {todos.map((item, index) => {
+                            return (
+                                <li key={index} className="todo-child">
+                                    {item.title}
+                                </li>
+                            );
+                        })}
+                    </div>
                     <input type="text" value={input} onChange={(event) => handleOnChange(event)} />
                     <button onClick={() => handleOnClick()}> Click me!</button>
                 </header>
