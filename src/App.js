@@ -3,7 +3,7 @@ import './App.css';
 import Nav from './components/Nav';
 import Todo from './components/Todo';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 function App() {
     // let name = 'Valne Cường'; // string
@@ -17,6 +17,14 @@ function App() {
         { id: 'todo3', title: 'play game', type: 'hoidanit' },
         { id: 'todo4', title: 'reading book', type: 'hoidanit' },
     ]);
+
+    // useEffect(function) => call when render
+    // useEffect(function, []) => componentDidMount()
+    // useEffect(function, [state]) => componentDidUpdate()
+
+    useEffect(() => {
+        console.log('run useEffect');
+    }, [input]);
 
     let number = 2023; //number
 
