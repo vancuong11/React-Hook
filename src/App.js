@@ -4,6 +4,7 @@ import Nav from './components/Nav';
 import Todo from './components/Todo';
 
 import { useState, useEffect } from 'react';
+import Covid from './components/Covid';
 
 function App() {
     // let name = 'Valne Cường'; // string
@@ -62,12 +63,15 @@ function App() {
                     <h1>
                         Hello World with React {name} {number}!
                     </h1>
-                    <Todo todos={todos} title={'All Todo'} deleteTodo={handleDelete} />
+
+                    <Covid />
+
+                    {/* <Todo todos={todos} title={'All Todo'} deleteTodo={handleDelete} />
 
                     {/* <Todo todo={todos.filter((item) => item.type === 'eric')} title={`Eric todo`} /> */}
 
-                    <input type="text" value={input} onChange={(event) => handleOnChange(event)} />
-                    <button onClick={() => handleOnClick()}> Click me!</button>
+                    {/*<input type="text" value={input} onChange={(event) => handleOnChange(event)} />
+                    <button onClick={() => handleOnClick()}> Click me!</button> */}
                 </header>
             </div>
         </>
