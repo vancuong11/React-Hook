@@ -3,17 +3,20 @@ import axios from 'axios';
 
 function Covid() {
     const [products, setProdocts] = useState([]);
-
+    const [loading, setLoading] = useState(true);
     // componentDidMount
     // get API React 18
     // format date =moment
     useEffect(() => {
-        let fetchData = async () => {
-            let res = await axios.get('https://dummyjson.com/products');
-            let data = res.data && res.data.products ? res.data.products : [];
-            setProdocts(data);
-        };
-        fetchData();
+        setTimeout(() => {
+            let fetchData = async () => {
+                let res = await axios.get('https://dummyjson.com/products');
+                let data = res.data && res.data.products ? res.data.products : [];
+                setProdocts(data);
+                setLoading(false);
+            };
+            fetchData();
+        }, 3000);
     }, []);
 
     return (
@@ -26,7 +29,8 @@ function Covid() {
                 </tr>
             </thead>
             <tbody>
-                {products &&
+                {loading === false ? (
+                    products &&
                     products.length > 0 &&
                     products.map((item) => {
                         return (
@@ -36,7 +40,14 @@ function Covid() {
                                 <td>{item.price}</td>
                             </tr>
                         );
-                    })}
+                    })
+                ) : (
+                    <tr>
+                        <td colSpan="3" style={{ textAlign: 'center' }}>
+                            Loading...
+                        </td>
+                    </tr>
+                )}
             </tbody>
         </table>
     );
