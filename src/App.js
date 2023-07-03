@@ -5,7 +5,7 @@ import Todo from './components/Todo';
 
 import { useState, useEffect } from 'react';
 import Covid from './components/Covid';
-
+import { CountDown, NewCountDown } from './components/Coutdown';
 function App() {
     // let name = 'Valne Cường'; // string
 
@@ -53,6 +53,10 @@ function App() {
         setTodos(currentTodo);
     };
 
+    const onTimesup = () => {
+        alert('times up');
+    };
+
     // re-render
     return (
         <>
@@ -60,6 +64,9 @@ function App() {
                 <header className="App-header">
                     <Nav />
                     <img src={logo} className="App-logo" alt="logo" />
+                    <CountDown onTimesup={onTimesup} />
+                    <span>---------------------</span>
+                    <NewCountDown onTimesup={onTimesup} />
                     <h1>
                         Hello World with React {name} {number}!
                     </h1>
