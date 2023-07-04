@@ -33,8 +33,20 @@ function App() {
 
                     {/* Router */}
                     <Routes>
-                        <Route path={path.COVID} element={<Covid />} />
+                        <Route path={path.HOME} element={<Covid />} />
+                        {/* <Route path={path.COVID} element={<Covid />} /> */}
+                        <Route
+                            path={path.TIMER_APP}
+                            element={
+                                <>
+                                    <CountDown onTimesup={onTimesup} />
+                                    <span>---------------------</span>
+                                    <NewCountDown onTimesup={onTimesup} />
+                                </>
+                            }
+                        />
                         <Route path={path.TODO} element={<Todo />} />
+                        <Route path={path.ABOUT} element={<div>About</div>} />
                     </Routes>
                 </header>
             </div>

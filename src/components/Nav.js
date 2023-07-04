@@ -1,16 +1,16 @@
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
+
+// different Link and NavLink: NavLinks add active class
 import './Nav.scss';
 
 function Nav() {
     return (
         <>
             <div className="topnav">
-                <Link className="active" to="/">
-                    Home
-                </Link>
-                <Link to="/covid">Covid</Link>
-                <Link to="/todos">Todo</Link>
-                <Link to="/about">About</Link>
+                <NavLink to="/">Home</NavLink>
+                <NavLink to="/timer-app">Timer Apps</NavLink>
+                <NavLink to="/todos">Todo</NavLink>
+                <NavLink to="/about">About</NavLink>
             </div>
         </>
     );
