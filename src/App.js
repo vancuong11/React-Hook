@@ -8,6 +8,8 @@ import Covid from './components/Covid';
 import { CountDown, NewCountDown } from './components/Coutdown';
 import { Routes, Route } from 'react-router-dom';
 import { path } from './utils/constain';
+import Blog from './components/Blog';
+import DetailBlog from './components/DetailBlog';
 
 function App() {
     // let name = 'Valne Cường'; // string
@@ -46,6 +48,8 @@ function App() {
                             }
                         />
                         <Route path={path.TODO} element={<Todo />} />
+                        <Route path={path.BLOG} element={<Blog />} />
+                        <Route path={path.DETAIL_BLOG} element={<DetailBlog />} />
                         <Route path={path.ABOUT} element={<div>About</div>} />
                     </Routes>
                 </header>
