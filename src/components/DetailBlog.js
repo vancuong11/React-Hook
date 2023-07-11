@@ -1,13 +1,19 @@
-import { Link, useParams } from 'react-router-dom';
+import { Link, useParams, useNavigate } from 'react-router-dom';
 
 function DetailBlog() {
+    // navigate = useHistory
+    const navigate = useNavigate();
+
     // get value param url
     const { id } = useParams();
 
+    const handleBack = () => {
+        navigate('/blog');
+    };
     return (
         <>
             <div>Detail Blog id: {id}</div>
-            <Link to="/blog">Back to blog</Link>
+            <span onClick={() => handleBack()}>&lt;-- Back</span>
         </>
     );
 }
