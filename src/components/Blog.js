@@ -1,11 +1,12 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import './Blog.scss';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 function Blog() {
     const [blog, setBlog] = useState([]);
     const [loading, setLoading] = useState(true);
+    const navigate = useNavigate();
 
     useEffect(() => {
         setTimeout(() => {
@@ -21,26 +22,37 @@ function Blog() {
             fetchData();
         }, 3000);
     }, []);
+
+    const handleAddNew = () => {
+        navigate('/add-new-blog');
+    };
     return (
-        <div className="blog-container">
-            {loading === false ? (
-                blog &&
-                blog.length > 0 &&
-                blog.map((item) => {
-                    return (
-                        <div className="single-blog" key={item.id}>
-                            <div className="title">Title: {item.title}</div>
-                            <div className="content">{item.body}</div>
-                            <button className="btn-detail">
-                                <Link to={`/blog/${item.id}`}>View Detail</Link>
-                            </button>
-                        </div>
-                    );
-                })
-            ) : (
-                <div>Loading...</div>
-            )}
-        </div>
+        <>
+            <div>
+                <button className="btn-add-new" onClick={() => handleAddNew()}>
+                    + Add new Blog
+                </button>
+            </div>
+            <div className="blog-container">
+                {loading === false ? (
+                    blog &&
+                    blog.length > 0 &&
+                    blog.map((item) => {
+                        return (
+                            <div className="single-blog" key={item.id}>
+                                <div className="title">Title: {item.title}</div>
+                                <div className="content">{item.body}</div>
+                                <button className="btn-detail">
+                                    <Link to={`/blog/${item.id}`}>View Detail</Link>
+                                </button>
+                            </div>
+                        );
+                    })
+                ) : (
+                    <div>Loading...</div>
+                )}
+            </div>
+        </>
     );
 }
 
