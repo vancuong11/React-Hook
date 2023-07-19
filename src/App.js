@@ -11,6 +11,7 @@ import { path } from './utils/constain';
 import Blog from './components/Blog';
 import DetailBlog from './components/DetailBlog';
 import AddNewBlog from './components/AddNewBlog';
+import NotFound from './components/404NotFound';
 
 function App() {
     // let name = 'Valne Cường'; // string
@@ -53,6 +54,7 @@ function App() {
                         <Route path={path.DETAIL_BLOG} element={<DetailBlog />} />
                         <Route path={path.ABOUT} element={<div>About</div>} />
                         <Route path={path.ADD_NEW_BLOG} element={<AddNewBlog />} />
+                        <Route path={'*'} element={<NotFound />} />
                     </Routes>
                 </header>
             </div>
